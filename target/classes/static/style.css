@@ -1,0 +1,100 @@
+
+body {
+	background-color: #ebebebcc;
+	}
+
+.title {
+	font-family: 'Impact', 'Arial Black', sans-serif;
+	font-size: 2.3rem;
+	letter-spacing: 1px;
+	color: #fff;
+	text-transform: uppercase;
+    }
+    
+h1 {
+	text-align: center;
+	margin-top: 50px;
+	}
+	
+.btn-custom {
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	text-align: center;
+	color: #333;
+	}
+	
+.btn-custom img {
+	width: 170px;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+	}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20px;
+	}
+
+.header img {
+	width: 60px;
+	height: auto;
+	margin-right: 10px;
+	border-radius: 7%;
+	}
+	
+.navbar-brand {
+	display: flex;
+	align-items: center;
+	}
+
+.btn-lg {
+	font-size: 1.25rem;
+	padding: .75rem 1.25rem;
+	border-radius: .3rem;
+	}
+    
+.btn-custom {
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	text-align: center;
+	color: #333;
+	}
+
+.btn-custom img {
+	width: 170px;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+	}
+	
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20px;
+	}
+	
+.header img {
+	width: 60px;
+	height: auto;
+	margin-right: 10px;
+	border-radius: 7%;
+	}
+	
+.navbar-brand {
+	display: flex;
+	align-items: center;
+	}
+			        
+.btn-img {
+    width: 100px;
+    height: 100px;
+}
