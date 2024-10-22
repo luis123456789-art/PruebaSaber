@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <title>Usuario</title>
+    <style>
+		.card {
+		    width: 400px;
+		    margin: 10px auto;
+		    padding: 20px;
+		    background-color: rgba(255, 255, 255, 0.9);
+		    border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+		}
+
+        .custom-badge {
+            color: rgb(0, 0, 0);
+            font-size: 1rem;
+            padding: 5px 10px;
+            margin-right: 5px;
+            border-radius: 20px;
+        }
+
+        .nivel-1 {
+            background-color: rgb(255, 128, 128);
+        }
+
+        .nivel-2 {
+            background-color: rgb(0, 128, 255);
+        }
+
+        .nivel-3 {
+            background-color: rgb(255, 128, 64);
+        }
+
+        .nivel-4 {
+            background-color: rgb(128, 255, 128);
+        }
+        
+    </style>
+</head>
+<body>
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
+	    <div class="container d-flex justify-content-start align-items-center">
+	        <img th:src="@{/logo-uts.png}" alt="UTS" class="img-fluid mr-3" style="max-width: 150px;">
+	        <a class="navbar-brand m-3">
+	            <span class="title">Saber Pro</span>
+	        </a>
+	    </div>
+	</nav><br>
+	
+	<div style="text-align: center;">
+		<h2 class="section__title" style="font-weight: bold; border-bottom: 2px solid rgb(0, 128, 255); display: inline-block;">Bienvenido [[${user.fullname}]]</h2><br><br>
+		<img th:src="@{/usuario.png}" alt="usuario" class="img-fluid mr-3" style="max-width: 150px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);">
+	</div><br>
+	
+ 	<div class="container text-center">
+		<div class="card ">
+        
+                <h2 class="section__title" style="font-weight: bold; border-bottom: 2px solid rgb(0, 128, 255); display: inline-block;">Información</h2><br>
+                <table class="table table-primary table-hover" style="margin: 0 auto; border-radius: 15px; overflow: hidden;">
+                    <tr>
+                        <td><strong>Tipo Documento:</strong> [[${user.tipoDocumento}]]: [[${user.numDocumento}]]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Teléfono:</strong> [[${user.numTelefono}]]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Número Registro:</strong> [[${user.numRegister}]]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Correo:</strong> [[${user.email}]]</td>
+                    </tr>
+                </table>
+            </div>
+	</div><br>
+	
+  	<div class="card text-center">
+		<h2 class="section__title" style="font-weight: bold; border-bottom: 2px solid rgb(0, 128, 255); display: inline-block;">Puntaje Global</h2><br>
+		<div class="badge-container">
+			<div>
+				<span class="badge rounded-pill custom-badge nivel-1" th:if="${user.PuntajeGlobal > '0' and user.PuntajeGlobal <= '125'}">[[${user.puntajeNivelGlobal}]]</span>
+				<span class="badge rounded-pill custom-badge nivel-2" th:if="${user.PuntajeGlobal > '125' and user.PuntajeGlobal <= '155'}">[[${user.puntajeNivelGlobal}]]</span>
+				<span class="badge rounded-pill custom-badge nivel-3" th:if="${user.PuntajeGlobal > '155' and user.PuntajeGlobal <= '190'}">[[${user.puntajeNivelGlobal}]]</span>
+				<span class="badge rounded-pill custom-badge nivel-4" th:if="${user.PuntajeGlobal > '190'}">[[${user.puntajeNivelGlobal}]]</span>
+				<span>[[${user.PuntajeGlobal}]]</span>
+			</div>
+		</div>
+	</div><br>
+	
+	<div class="card text-center">	
+	<h2 class="section__title" style="font-weight: bold; border-bottom: 2px solid rgb(0, 128, 255); display: inline-block;">Puntaje UTS</h2><br>
+		<div class="badge-container">
+			<div>
+				<span class="badge rounded-pill custom-badge nivel-4" th:if="${user.puntajeGlobal != 'ANULADO' and user.puntajeGlobal > '125'}">Aprobado UTS</span>
+				<span class="badge rounded-pill custom-badge nivel-1" th:if="${user.puntajeGlobal == 'ANULADO' or user.puntajeGlobal <= '125'}">Reprobado UTS</span>
+			</div>
+		</div>
+	</div><br>
+     
+
+ <div class="card">
+    <h2 class="text-center section__title" style="font-weight: bold; border-bottom: 2px solid rgb(0, 128, 255); display: inline-block;">Puntaje Específico</h2><br>
+    <div class="badge-container text-center">
+        <div>
+            <strong>Comunicación escrita</strong>
+            <div>
+                <span class="badge rounded-pill custom-badge nivel-1"
+                    th:if="${user.comunicacionEscrita > '0' and user.comunicacionEscrita <='125'}"
+                    >[[${user.comunicacionEscritaNivel}]]
+                </span>
+                <span  class="badge rounded-pill custom-badge nivel-2"
+                    th:if="${user.comunicacionEscrita > '125' and user.comunicacionEscrita <= '155'}"
+                    >[[${user.comunicacionEscritaNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-3"
+                    th:if="${user.comunicacionEscrita > '155' and user.comunicacionEscrita <= '190'}"
+                    >[[${user.comunicacionEscritaNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-4" th:if="${user.comunicacionEscrita > '190'}"
+                    >[[${user.comunicacionEscritaNivel}]]
+                    </span>
+                <br>
+				<strong><span>Puntaje: </span></strong>[[${user.comunicacionEscrita}]]
+            </div>
+        </div><br>
+        
+        <div>
+            <strong>Razonamiento cuantitativo</strong>
+            <div>
+                <span  class="badge rounded-pill custom-badge nivel-1"
+                    th:if="${user.razonamientoCuantitativo > '0' and user.razonamientoCuantitativo <= '125'}"
+                    style=>[[${user.razonamientoCuantitativoNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-2"
+                    th:if="${user.razonamientoCuantitativo > '125' and user.razonamientoCuantitativo <= '155'}"
+                    style=>[[${user.razonamientoCuantitativoNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-3"
+                    th:if="${user.razonamientoCuantitativo > '155' and user.razonamientoCuantitativo <= '190'}"
+                    style=>[[${user.razonamientoCuantitativoNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-4" th:if="${user.razonamientoCuantitativo > '190'}"
+                    style=>[[${user.razonamientoCuantitativoNivel}]]
+                    </span>
+					<br>
+                <strong><span>Puntaje: </span></strong>[[${user.razonamientoCuantitativo}]]
+            </div>
+        </div><br>
+        
+        <div>
+            <strong>Lectura crítica</strong>
+            <div>
+                <span  class="badge rounded-pill custom-badge nivel-1"
+                    th:if="${user.lecturaCritica > '0' and user.lecturaCritica <= '125'}"
+                    style=>[[${user.lecturaCriticaNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-2"
+                    th:if="${user.lecturaCritica > '125' and user.lecturaCritica <= '155'}"
+                    style=>[[${user.lecturaCriticaNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-3"
+                    th:if="${user.lecturaCritica > '155' and user.lecturaCritica <= '190'}"
+                    style=>[[${user.lecturaCriticaNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-4" th:if="${user.lecturaCritica > '190'}"
+                    style=>[[${user.lecturaCriticaNivel}]]
+                    </span>
+					<br>
+                <strong><span>Puntaje: </span></strong>[[${user.lecturaCritica}]]
+            </div>
+        </div><br>
+        
+        <div>
+            <strong>Competencias ciudadanas</strong>
+            <div>
+                <span  class="badge rounded-pill custom-badge nivel-1"
+                    th:if="${user.competenciasCiudadanas > '0' and user.competenciasCiudadanas <= '125'}"
+                    style=>[[${user.competenciasCiudadanasNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-2"
+                    th:if="${user.competenciasCiudadanas > '125' and user.competenciasCiudadanas <= '155'}"
+                    style=>[[${user.competenciasCiudadanasNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-3"
+                    th:if="${user.competenciasCiudadanas > '155' and user.competenciasCiudadanas <= '190'}"
+                    style=>[[${user.competenciasCiudadanasNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-4" th:if="${user.competenciasCiudadanas > '190'}"
+                    style=>[[${user.competenciasCiudadanasNivel}]]
+                    </span>
+					<br>
+                <strong><span>Puntaje: </span></strong>[[${user.competenciasCiudadanas}]]
+            </div>
+        </div><br>
+        
+        <div>
+            <strong>Inglés</strong>
+            <div>
+                <span  class="badge rounded-pill custom-badge nivel-1"
+                    th:if="${user.ingles > '0' and user.ingles <= '125'}"
+                    style=>[[${user.inglesNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-2"
+                    th:if="${user.ingles > '125' and user.ingles <= '155'}"
+                    style=>[[${user.inglesNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-3"
+                    th:if="${user.ingles > '155' and user.ingles <= '190'}"
+                    style=>[[${user.inglesNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-4" th:if="${user.ingles > '190'}"
+                    style=>[[${user.inglesNivel}]]
+                    </span>
+					<br>
+                <strong><span>Puntaje: </span></strong>[[${user.ingles}]]
+            </div>
+        </div><br>
+        
+        <div>
+            <strong>Formulación de proyectos de Ingeniería</strong>
+            <div>
+                <span  class="badge rounded-pill custom-badge nivel-1"
+                    th:if="${user.proyectosIngenieria > '0' and user.proyectosIngenieria <= '125'}"
+                    style=>[[${user.proyectosIngenieriaNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-2"
+                    th:if="${user.proyectosIngenieria > '125' and user.proyectosIngenieria <= '155'}"
+                    style=>[[${user.proyectosIngenieriaNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-3"
+                    th:if="${user.proyectosIngenieria > '155' and user.proyectosIngenieria <= '190'}"
+                    style=>[[${user.proyectosIngenieriaNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-4" th:if="${user.proyectosIngenieria > '190'}"
+                    style=>[[${user.proyectosIngenieriaNivel}]]
+                    </span>
+					<br>
+                <strong><span>Puntaje: </span></strong>[[${user.proyectosIngenieria}]]
+            </div>
+        </div><br>
+        
+        <div>
+            <strong>Pensamiento matemático</strong>
+            <div>
+                <span  class="badge rounded-pill custom-badge nivel-1"
+                    th:if="${user.pensamientoMatematico > '0' and user.pensamientoMatematico <= '125'}"
+                    style=>[[${user.pensamientoMatematicoNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-2"
+                    th:if="${user.pensamientoMatematico > '125' and user.pensamientoMatematico <= '155'}"
+                    style=>[[${user.pensamientoMatematicoNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-3"
+                    th:if="${user.pensamientoMatematico > '155' and user.pensamientoMatematico <= '190'}"
+                    style=>[[${user.pensamientoMatematicoNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-4" th:if="${user.pensamientoMatematico > '190'}"
+                    style=>[[${user.pensamientoMatematicoNivel}]]
+                    </span>
+					<br>
+                <strong><span>Puntaje: </span></strong>[[${user.pensamientoMatematico}]]
+            </div>
+        </div><br>
+        
+        <div>
+            <strong>Diseño de software</strong>
+            <div>
+                <span  class="badge rounded-pill custom-badge nivel-1"
+                    th:if="${user.disenhoSoftware > '0' and user.disenhoSoftware <= '125'}"
+                    style=>[[${user.disenhoSoftwareNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-2"
+                    th:if="${user.disenhoSoftware > '125' and user.disenhoSoftware <= '155'}"
+                    style=>[[${user.disenhoSoftwareNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-3"
+                    th:if="${user.disenhoSoftware > '155' and user.disenhoSoftware <= '190'}"
+                    style=>[[${user.disenhoSoftwareNivel}]]
+                    </span>
+                <span  class="badge rounded-pill custom-badge nivel-4" th:if="${user.disenhoSoftware > '190'}"
+                    style=>[[${user.disenhoSoftwareNivel}]]
+                    </span>
+					<br>
+                <strong><span>Puntaje: </span></strong>[[${user.disenhoSoftware}]]
+            </div>
+        </div><br>
+
+		<div>
+			<strong>Nivel del inglés</strong>
+				<div>
+					<span class="badge rounded-pill custom-badge"
+						>[[${user.nivelDeIngles}]]
+					</span>
+				</div>
+			</div>
+		</div>
+	</div><br>
+	
+	<div class="text-center">
+		<a th:href="@{/login}" class="btn btn-primary m-3 p-3">Salir</a>
+	</div>
+	
+	<footer class="footer bg-dark text-white fixed-bottom">
+		<div class="container">
+			<p class="text-center mb-0 py-2">Adrian Farid Hernandez Prince</p>
+		</div>
+	</footer><br><br><br><br>
+
+	<script th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}" intity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

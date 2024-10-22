@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <title>Agregar Usuario</title>
+</head>
+<style>
+	#seccionOculta {
+	    display: none;
+	} 
+</style>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
+			<div class="container d-flex justify-content-start align-items-center">
+				<img th:src="@{/logo-uts.png}" alt="UTS" class="img-fluid mr-3" style="max-width: 150px;">
+				<a class="navbar-brand m-3">
+					<span class="title">Saber Pro</span>
+				</a>
+			</div>
+		</nav><br>
+		
+    <div class="container d-flex justify-content-center">
+
+        <div class="card center-card" style="max-width: 60%;">
+            <div class="card-body">
+				
+				<div style="text-align: center;">
+					    <h2 class="section__title" style="font-weight: bold; border-bottom: 2px solid rgb(0, 128, 255); display: inline-block;">Agregar Usuario</h2><br><br>
+						<img th:src="@{/agregarUsuario.png}" alt="agregarUsuario" class="img-fluid mr-3" style="max-width: 150px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);">
+					</div><br>
+
+                <div>
+                    <form action="/administrador/save" th:object="${user}" method="post">
+                        <input type="hidden" th:field="*{id}">
+
+						<table class="table table-primary table-hover table-sm text-center mt-3" style="width: 70%; margin: 0 auto; border-radius: 7px; overflow: hidden;">
+						                        <tbody>
+													<tr>
+														<td><label>Tipo de Documento</label></td>
+						                                <td><input type="text" name="tipoDocumento" class="form-control" th:field="*{tipoDocumento}" required></td>
+													</tr>
+													
+													<tr>
+														<td><label>Número de Documento</label></td>
+														<td><input type="number" name="numDocumento" class="form-control" th:field="*{numDocumento}" required></td>
+													</tr>
+
+													<tr>
+														<td><label>Nombre completo</label></td>
+														<td><input type="text" name="fullname" class="form-control" th:field="*{fullname}" required></td>
+													</tr>
+													
+						                            <tr>
+						                                <td><label>Correo</label></td>
+						                                <td><input type="email" name="email" class="form-control" th:field="*{email}" required></td>
+						                            </tr>
+
+													<tr>
+														<td><label>Contraseña</label></td>
+														<td><input type="text" name="password" class="form-control" th:field="*{password}" required></td>
+													</tr>
+													
+						                            <tr>
+						                                <td><label>Teléfono</label></td>
+						                                <td><input type="number" name="numTelefono" class="form-control" th:field="*{numTelefono}"></td>
+						                         	</tr>
+													
+													<tr>
+														<td><label>No De Registro</label></td>
+														<td><input type="text" name="numRegister" class="form-control" th:field="*{numRegister}" required></td>
+													</tr>
+													
+													<tr>
+						                                <td><label>Comunicación Escrita</label></td>
+						                                <td><input type="number" name="comunicacionEscrita" class="form-control" th:field="*{comunicacionEscrita}"></td>
+							                      	</tr>
+
+													<tr>
+														<td><label>Razonamiento Cuantitativo</label></td>
+														<td><input type="number" name="razonamientoCuantitativo" class="form-control" th:field="*{razonamientoCuantitativo}"></td>
+													</tr>
+													
+						                            <tr>
+														<td><label>Lectura crítica</label></td>
+														<td><input type="number" name="lecturaCritica" class="form-control" th:field="*{lecturaCritica}"></td>
+						                          	</tr>
+
+													<tr>
+														<td><label>Competencias Ciudadanas</label></td>
+														<td><input type="number" name="competenciasCiudadanas" class="form-control" th:field="*{competenciasCiudadanas}"></td>
+													</tr>
+													
+						                            <tr>
+														<td><label>Inglés</label></td>
+														<td><input type="number" name="ingles" class="form-control" th:field="*{ingles}" id="ingles" oninput="calcularPuntajeGlobal(); actualizarNivelIngles();"></td>
+							                     	</tr>
+
+													<tr>
+														<td><label>Formulación de proyectos de Ingeniería </label></td>
+														<td><input type="number" name="proyectosIngenieria" class="form-control" th:field="*{proyectosIngenieria}"></td>
+													</tr>
+													
+						                            <tr>
+														<td><label>Pensamiento Científico - Matemáticas y estadística </label></td>
+														<td><input type="number" name="pensamientoMatematico" class="form-control" th:field="*{pensamientoMatematico}"></td>
+						                         	</tr>
+
+													<tr>
+														<td><label> Diseño de Software </label></td>
+														<td><input type="number" name="disenhoSoftware" class="form-control" th:field="*{disenhoSoftware}"></td>
+													</tr>
+
+													<tr id="seccionOculta">
+													<td><label>Comunicación Escrita nivel</label></td>
+														<td><select type="text" name="comunicacionEscritaNivel" class="form-control" th:field="*{comunicacionEscritaNivel}">
+															<option value="none"></option>
+															<option value="nivel 1">Nivel 1</option>
+															<option value="nivel 2">Nivel 2</option>
+															<option value="nivel 3">Nivel 3</option>
+															<option value="nivel 4">Nivel 4</option>
+														</select>
+													</td>
+													
+													<td><label>Razonamiento Cuantitativo Nivel</label></td>
+														<td><select type="text" name="razonamientoCuantitativoNivel" class="form-control" th:field="*{razonamientoCuantitativoNivel}">
+															<option value="none"></option>
+															<option value="nivel 1">Nivel 1</option>
+															<option value="nivel 2">Nivel 2</option>
+															<option value="nivel 3">Nivel 3</option>
+															<option value="nivel 4">Nivel 4</option>
+														</select>
+													</td>
+													
+													<td><label>Lectura crítica Nivel</label></td>
+														<td><select type="text" name="lecturaCriticaNivel" class="form-control" th:field="*{lecturaCriticaNivel}">
+															<option value="none"></option>
+															<option value="nivel 1">Nivel 1</option>
+															<option value="nivel 2">Nivel 2</option>
+															<option value="nivel 3">Nivel 3</option>
+															<option value="nivel 4">Nivel 4</option>
+														</select>       
+													</td>
+																					
+													<td><label>Competencias Ciudadanas nivel</label></td>
+														<td><select type="text" name="competenciasCiudadanasNivel" class="form-control" th:field="*{competenciasCiudadanasNivel}">                              
+															<option value="none"></option>
+															<option value="nivel 1">Nivel 1</option>
+															<option value="nivel 2">Nivel 2</option>
+															<option value="nivel 3">Nivel 3</option>
+															<option value="nivel 4">Nivel 4</option>
+														</select>
+													</td>
+													
+													<td><label>Inglés nivel</label></td>
+														<td><select type="text" name="inglesNivel" class="form-control" th:field="*{inglesNivel}">                        
+															<option value="none"></option>
+															<option value="nivel 1">Nivel 1</option>
+															<option value="nivel 2">Nivel 2</option>
+															<option value="nivel 3">Nivel 3</option>
+															<option value="nivel 4">Nivel 4</option>
+														</select>
+													</td>
+														
+													<td><label>Formulación de proyectos de Ingeniería Nivel</label></td>
+														<td><select type="text" name="proyectosIngenieriaNivel" class="form-control" th:field="*{proyectosIngenieriaNivel}">
+															<option value="none"></option>
+															<option value="nivel 1">Nivel 1</option>
+															<option value="nivel 2">Nivel 2</option>
+															<option value="nivel 3">Nivel 3</option>
+															<option value="nivel 4">Nivel 4</option>
+														</select>
+													</td>
+													
+													<td><label>Pensamiento Científico - Matemáticas y estadística Nivel</label></td>
+														<td><select type="text" name="pensamientoMatematicoNivel" class="form-control" th:field="*{pensamientoMatematicoNivel}">
+															<option value="none"></option>
+															<option value="nivel 1">Nivel 1</option>
+															<option value="nivel 2">Nivel 2</option>
+															<option value="nivel 3">Nivel 3</option>
+															<option value="nivel 4">Nivel 4</option>
+														</select>
+													</td>
+														
+													<td><label>Diseño de Software Nivel</label></td>
+														<td><select type="text" name="disenhoSoftwareNivel" class="form-control" th:field="*{disenhoSoftwareNivel}">
+															<option value="none"></option>
+															<option value="nivel 1">Nivel 1</option>
+															<option value="nivel 2">Nivel 2</option>
+															<option value="nivel 3">Nivel 3</option>
+															<option value="nivel 4">Nivel 4</option>
+														</select>
+													</td>
+													</tr>
+													
+													<tr>
+														<td><label>Saber Pro Puntaje nivel</label></td>
+														<td><input type="text" name="puntajeNivelGlobal" class="form-control" id="puntajeNivelGlobal" readonly th:field="*{puntajeNivelGlobal}">
+														</td>
+													</tr>
+													
+													<tr>
+														<td><label> Nivel de inglés </label></td>
+														<td><input type="text" name="nivelIngles" id="nivelIngles" class="form-control" readonly th:field="*{nivelDeIngles}">
+														</td>
+													</tr>
+													
+													<tr>
+														<td><label>Puntaje Global</label></td>
+														<td><input type="text" name="PuntajeGlobal" id="PuntajeGlobal" class="form-control" readonly th:field="*{PuntajeGlobal}">
+														</td>
+													</tr>
+													
+						                        </tbody>
+						                    </table>
+
+						<div class="text-center">
+						    <button class="btn btn-success m-3 p-3">Agregar</button>
+						    <button class="btn btn-warning m-3 p-3" onclick="anularValores()">Anular</button>
+							<a th:href="@{/administrador/}" class="btn btn-primary m-3 p-3">Atrás</a>
+						</div>
+                	</form>
+            	</div>
+        	</div>
+    	</div>
+    </div>
+			
+		<footer class="footer bg-dark text-white fixed-bottom">
+			<div class="container">
+			    <p class="text-center mb-0 py-2">Adrian Farid Hernandez Prince</p>
+			</div>
+		</footer><br><br><br>
+
+		<script th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}" intity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+		
+
+		
+    
+   
+    
+    <script>
+        $(document).ready(function() {
+            $('#comunicacionEscrita').on('input', function() {
+                var comunicacionEscrita = parseInt($(this).val());
+                var nivel = 'none';
+
+                if (comunicacionEscrita >= 0 && comunicacionEscrita <= 125) {
+                    nivel = 'nivel 1';
+                } else if (comunicacionEscrita > 125 && comunicacionEscrita <= 155) {
+                    nivel = 'nivel 2';
+                } else if (comunicacionEscrita > 155 && comunicacionEscrita <= 190) {
+                    nivel = 'nivel 3';
+                } else if (comunicacionEscrita > 190) {
+                    nivel = 'nivel 4';
+                }
+
+                $('select[name="comunicacionEscritaNivel"]').val(nivel);
+            });
+        });
+    </script>
+   
+     <script>
+        $(document).ready(function() {
+            $('#razonamientoCuantitativo').on('input', function() {
+                var razonamientoCuantitativo = parseInt($(this).val());
+                var nivel = 'none';
+
+                if (razonamientoCuantitativo >= 0 && razonamientoCuantitativo <= 125) {
+                    nivel = 'nivel 1';
+                } else if (razonamientoCuantitativo > 125 && razonamientoCuantitativo  <= 155) {
+                    nivel = 'nivel 2';
+                } else if (razonamientoCuantitativo > 155 && razonamientoCuantitativo <= 190) {
+                    nivel = 'nivel 3';
+                } else if (razonamientoCuantitativo > 190) {
+                    nivel = 'nivel 4';
+                }-
+
+                $('select[name="razonamientoCuantitativoNivel"]').val(nivel);
+            });
+        });
+    </script>
+   
+   <script>
+        $(document).ready(function() {
+            $('#lecturaCritica').on('input', function() {
+                var lecturaCritica = parseInt($(this).val());
+                var nivel = 'none';
+
+                if (lecturaCritica >= 0 && lecturaCritica <= 125) {
+                    nivel = 'nivel 1';
+                } else if (lecturaCritica > 125 &&lecturaCritica  <= 155) {
+                    nivel = 'nivel 2';
+                } else if (lecturaCritica > 155 && lecturaCritica <= 190) {
+                    nivel = 'nivel 3';
+                } else if (lecturaCritica > 190) {
+                    nivel = 'nivel 4';
+                }
+
+                $('select[name="lecturaCriticaNivel"]').val(nivel);
+            });
+        });
+    </script>
+    
+    <script>
+        $(document).ready(function() {
+            $('#competenciasCiudadanas').on('input', function() {
+                var competenciasCiudadanas = parseInt($(this).val());
+                var nivel = 'none';
+
+                if (competenciasCiudadanas >= 0 && competenciasCiudadanas <= 125) {
+                    nivel = 'nivel 1';
+                } else if (competenciasCiudadanas > 125 &&competenciasCiudadanas  <= 155) {
+                    nivel = 'nivel 2';
+                } else if (competenciasCiudadanas > 155 && competenciasCiudadanas <= 190) {
+                    nivel = 'nivel 3';
+                } else if (competenciasCiudadanas > 190) {
+                    nivel = 'nivel 4';
+                }
+
+                $('select[name="competenciasCiudadanasNivel"]').val(nivel);
+            });
+        });
+    </script>
+    
+      <script>
+        $(document).ready(function() {
+            $('#ingles').on('input', function() {
+                var ingles = parseInt($(this).val());
+                var nivel = 'none';
+
+                if (ingles >= 0 && ingles <= 125) {
+                    nivel = 'nivel 1';
+                } else if (ingles > 125 &&ingles  <= 155) {
+                    nivel = 'nivel 2';
+                } else if (ingles > 155 && ingles <= 190) {
+                    nivel = 'nivel 3';
+                } else if (ingles > 190) {
+                    nivel = 'nivel 4';
+                }
+
+                $('select[name="inglesNivel"]').val(nivel);
+            });
+        });
+    </script>
+    
+     <script>
+        $(document).ready(function() {
+            $('#proyectosIngenieria').on('input', function() {
+                var proyectosIngenieria = parseInt($(this).val());
+                var nivel = 'none';
+
+                if (proyectosIngenieria >= 0 && proyectosIngenieria <= 125) {
+                    nivel = 'nivel 1';
+                } else if (proyectosIngenieria > 125 && proyectosIngenieria  <= 155) {
+                    nivel = 'nivel 2';
+                } else if (proyectosIngenieria > 155 && proyectosIngenieria <= 190) {
+                    nivel = 'nivel 3';
+                } else if (proyectosIngenieria > 190) {
+                    nivel = 'nivel 4';
+                }
+
+                $('select[name="proyectosIngenieriaNivel"]').val(nivel);
+            });
+        });
+    </script>
+    
+    
+    
+       <script>
+        $(document).ready(function() {
+            $('#pensamientoMatematico').on('input', function() {
+                var pensamientoMatematico = parseInt($(this).val());
+                var nivel = 'none';
+
+                if (pensamientoMatematico >= 0 && pensamientoMatematico <= 125) {
+                    nivel = 'nivel 1';
+                } else if (pensamientoMatematico > 125 && pensamientoMatematico  <= 155) {
+                    nivel = 'nivel 2';
+                } else if (pensamientoMatematico > 155 && pensamientoMatematico <= 190) {
+                    nivel = 'nivel 3';
+                } else if (pensamientoMatematico > 190) {
+                    nivel = 'nivel 4';
+                }
+
+                $('select[name="pensamientoMatematicoNivel"]').val(nivel);
+            });
+        });
+    </script>
+    
+       <script>
+        $(document).ready(function() {
+            $('#disenhoSoftware').on('input', function() {
+                var disenhoSoftware = parseInt($(this).val());
+                var nivel = 'none';
+
+                if (disenhoSoftware >= 0 && disenhoSoftware <= 125) {
+                    nivel = 'nivel 1';
+                } else if (disenhoSoftware > 125 && disenhoSoftware  <= 155) {
+                    nivel = 'nivel 2';
+                } else if (disenhoSoftware > 155 && disenhoSoftware <= 190) {
+                    nivel = 'nivel 3';
+                } else if (disenhoSoftware > 190) {
+                    nivel = 'nivel 4';
+                }
+
+                $('select[name="disenhoSoftwareNivel"]').val(nivel);
+            });
+        });
+    </script>
+    
+	<script>
+		function calcularPuntajeGlobal() {
+		    // Obtén los valores de los puntajes de las asignaturas
+		    var comunicacionEscrita = parseFloat(document.getElementsByName("comunicacionEscrita")[0].value) || 0;
+		    var razonamientoCuantitativo = parseFloat(document.getElementsByName("razonamientoCuantitativo")[0].value) || 0;
+		    var lecturaCritica = parseFloat(document.getElementsByName("lecturaCritica")[0].value) || 0;
+		    var competenciasCiudadanas = parseFloat(document.getElementsByName("competenciasCiudadanas")[0].value) || 0;
+		    var ingles = parseFloat(document.getElementsByName("ingles")[0].value) || 0;
+		    var proyectosIngenieria = parseFloat(document.getElementsByName("proyectosIngenieria")[0].value) || 0;
+		    var pensamientoMatematico = parseFloat(document.getElementsByName("pensamientoMatematico")[0].value) || 0;
+		    var disenhoSoftware = parseFloat(document.getElementsByName("disenhoSoftware")[0].value) || 0;
+
+		    // Sumar todos los puntajes
+		    var total = comunicacionEscrita + razonamientoCuantitativo + lecturaCritica +
+		                                competenciasCiudadanas + ingles + proyectosIngenieria +
+		                                pensamientoMatematico + disenhoSoftware;
+
+		    const numeroDeAreas = 8; // Número total de áreas evaluadas
+		    const puntajeGlobal = Math.round(total / numeroDeAreas); // Calcular el puntaje promedio redondeado
+
+		    // Asigna el puntaje global al campo correspondiente como un número entero
+		    document.getElementById("PuntajeGlobal").value = puntajeGlobal;
+		    
+		    console.log("Puntaje de Comunicación Escrita:", comunicacionEscrita);
+		    console.log("Puntaje Global Calculado (redondeado):", puntajeGlobal);
+		    
+		    // Actualizar el nivel del puntaje global
+		    actualizarNivelPuntajeGlobal(puntajeGlobal);
+		}
+
+
+	    function actualizarNivelIngles() {
+	        const ingles = parseInt(document.getElementById('ingles').value) || 0;
+	        let nivel;
+
+	        // Definir niveles según el puntaje
+	        if (ingles >= 225) {
+	            nivel = "C2";
+	        } else if (ingles >= 200) {
+	            nivel = "C1";
+	        } else if (ingles >= 175) {
+	            nivel = "B2";
+	        } else if (ingles >= 150) {
+	            nivel = "B1";
+	        } else if (ingles >= 125) {
+	            nivel = "A2";
+	        } else if (ingles >= 100) {
+	            nivel = "A1";
+	        } else {
+	            nivel = "A0";
+	        }
+
+	        // Asignar el nivel al campo correspondiente
+	        document.getElementById('nivelIngles').value = nivel;
+
+	        console.log("Nivel de Inglés:", nivel);
+	    }
+
+	    function actualizarNivelPuntajeGlobal(puntajeGlobal) {
+	        let nivel;
+	        
+	        // Definir niveles según el puntaje global
+	        if (puntajeGlobal >= 0 && puntajeGlobal <= 125) {
+	            nivel = 'Nivel 1';
+	        } else if (puntajeGlobal > 125 && puntajeGlobal <= 155) {
+	            nivel = 'Nivel 2';
+	        } else if (puntajeGlobal > 155 && puntajeGlobal <= 190) {
+	            nivel = 'Nivel 3';
+	        } else if (puntajeGlobal > 190) {
+	            nivel = 'Nivel 4';
+	        }
+
+	        // Asignar el nivel al campo correspondiente
+	        document.getElementById('puntajeNivelGlobal').value = nivel;
+
+	        console.log("Nivel del Puntaje Global:", nivel);
+	    }
+
+	    // Añade un evento a cada campo que necesite calcular el puntaje global
+	    document.querySelectorAll('input[type="number"], select').forEach(function(element) {
+	        element.addEventListener('change', function() {
+	            calcularPuntajeGlobal();
+	            actualizarNivelIngles();
+	        });
+	    });
+	</script>
+
+
+   <script>
+
+   function anularValores() {
+	    console.log("Función anularValores() llamada.");
+
+	    // Seleccionar el input de puntaje global por su ID
+	    var puntajeGlobalInput = document.getElementById('PuntajeGlobal');
+
+	    console.log("Elemento PuntajeGlobal:", puntajeGlobalInput);
+
+	    // Verificar si el input de puntaje global existe
+	    if (puntajeGlobalInput) {
+	        puntajeGlobalInput.value = "ANULADO";
+	        console.log("Valor del PuntajeGlobal cambiado a 'ANULADO'. Nuevo valor:", puntajeGlobalInput.value);
+	    }
+
+	    // Obtener todos los inputs y selects dentro del formulario
+	    var inputs = document.querySelectorAll('input, select');
+
+	    // Excluir los campos específicos
+	    var camposExcluidos = ["id", "numDocumento", "fullname", "email", "numTelefono", "numRegister", "tipoDocumento", "password"];
+
+	    // Iterar sobre cada campo y anularlo si no está en la lista de campos excluidos
+	    inputs.forEach(function(input) {
+	        var nombreCampo = input.getAttribute("name");
+	        // Verificar si el campo no está en la lista de campos excluidos
+	        if (nombreCampo && !camposExcluidos.includes(nombreCampo)) {
+	            // Verificar si el campo es numérico
+	            if (!isNaN(parseFloat(input.value)) && isFinite(input.value)) {
+	                // Convertir el valor a cero solo si es numérico
+	                input.value = 0;
+	            } else {
+	                // Si no es numérico, establecerlo como "ANULADO"
+	                input.value = "ANULADO";
+	            }
+	        }
+	    });
+	}
+
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
