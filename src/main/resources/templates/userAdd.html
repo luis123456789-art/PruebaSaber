@@ -10,21 +10,8 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
     <title>Agregar Usuario</title>
 </head>
-<style>
-	#seccionOculta {
-	    display: none;
-	} 
-</style>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
-			<div class="container d-flex justify-content-start align-items-center">
-				<img th:src="@{/logo-uts.png}" alt="UTS" class="img-fluid mr-3" style="max-width: 150px;">
-				<a class="navbar-brand m-3">
-					<span class="title">Saber Pro</span>
-				</a>
-			</div>
-		</nav><br>
 		
     <div class="container d-flex justify-content-center">
 
@@ -33,7 +20,7 @@
 				
 				<div style="text-align: center;">
 					    <h2 class="section__title" style="font-weight: bold; border-bottom: 2px solid rgb(0, 128, 255); display: inline-block;">Agregar Usuario</h2><br><br>
-						<img th:src="@{/agregarUsuario.png}" alt="agregarUsuario" class="img-fluid mr-3" style="max-width: 150px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);">
+						<img th:src="@{/agregarusuario.png}" alt="agregarUsuario" class="img-fluid mr-3" style="max-width: 150px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);">
 					</div><br>
 
                 <div>
@@ -109,7 +96,7 @@
 													
 						                            <tr>
 														<td><label>Pensamiento Científico - Matemáticas y estadística </label></td>
-														<td><input type="number" name="pensamientoMatematico" class="form-control" th:field="*{pensamientoMatematico}"></td>
+														<td><input type="number" name="pensamientoEstadistico" class="form-control" th:field="*{pensamientoEstadistico}"></td>
 						                         	</tr>
 
 													<tr>
@@ -179,7 +166,7 @@
 													</td>
 													
 													<td><label>Pensamiento Científico - Matemáticas y estadística Nivel</label></td>
-														<td><select type="text" name="pensamientoMatematicoNivel" class="form-control" th:field="*{pensamientoMatematicoNivel}">
+														<td><select type="text" name="pensamientoEstadisticoNivel" class="form-control" th:field="*{pensamientoEstadisticoNivel}">
 															<option value="none"></option>
 															<option value="nivel 1">Nivel 1</option>
 															<option value="nivel 2">Nivel 2</option>
@@ -222,7 +209,7 @@
 
 						<div class="text-center">
 						    <button class="btn btn-success m-3 p-3">Agregar</button>
-						    <button class="btn btn-warning m-3 p-3" onclick="anularValores()">Anular</button>
+						    <button class="btn btn-danger m-3 p-3" onclick="anularValores()">Anular</button>
 							<a th:href="@{/administrador/}" class="btn btn-primary m-3 p-3">Atrás</a>
 						</div>
                 	</form>
@@ -230,12 +217,6 @@
         	</div>
     	</div>
     </div>
-			
-		<footer class="footer bg-dark text-white fixed-bottom">
-			<div class="container">
-			    <p class="text-center mb-0 py-2">Adrian Farid Hernandez Prince</p>
-			</div>
-		</footer><br><br><br>
 
 		<script th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

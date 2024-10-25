@@ -30,8 +30,8 @@ public class User {
 	private String inglesNivel;
 	private String proyectosIngenieria;
 	private String proyectosIngenieriaNivel;
-	private String pensamientoMatematico;
-	private String pensamientoMatematicoNivel;
+	private String pensamientoEstadistico;
+	private String pensamientoEstadisticoNivel;
 	private String disenhoSoftware;
 	private String disenhoSoftwareNivel;
 	private String nivelDeIngles;
@@ -53,8 +53,8 @@ public class User {
 			String comunicacionEscrita, String comunicacionEscritaNivel, String razonamientoCuantitativo,
 			String razonamientoCuantitativoNivel, String lecturaCritica, String lecturaCriticaNivel,
 			String competenciasCiudadanas, String competenciasCiudadanasNivel, String ingles, String inglesNivel,
-			String proyectosIngenieria, String proyectosIngenieriaNivel, String pensamientoMatematico,
-			String pensamientoMatematicoNivel, String disenhoSoftware, String disenhoSoftwareNivel, String nivelDeIngles) {
+			String proyectosIngenieria, String proyectosIngenieriaNivel, String pensamientoEstadistico,
+			String pensamientoEstadisticoNivel, String disenhoSoftware, String disenhoSoftwareNivel, String nivelDeIngles) {
 		super();
 		this.id = id;
 		this.fullname = fullname;
@@ -78,8 +78,8 @@ public class User {
 		this.inglesNivel = inglesNivel;
 		this.proyectosIngenieria = proyectosIngenieria;
 		this.proyectosIngenieriaNivel = proyectosIngenieriaNivel;
-		this.pensamientoMatematico = pensamientoMatematico;
-		this.pensamientoMatematicoNivel = pensamientoMatematicoNivel;
+		this.pensamientoEstadistico = pensamientoEstadistico;
+		this.pensamientoEstadisticoNivel = pensamientoEstadisticoNivel;
 		this.disenhoSoftware = disenhoSoftware;
 		this.disenhoSoftwareNivel = disenhoSoftwareNivel;
 		this.nivelDeIngles = nivelDeIngles;
@@ -261,20 +261,20 @@ public class User {
 		this.proyectosIngenieriaNivel = proyectosIngenieriaNivel;
 	}
 
-	public String getPensamientoMatematico() {
-		return pensamientoMatematico;
+	public String getPensamientoEstadistico() {
+		return pensamientoEstadistico;
 	}
 
-	public void setPensamientoMatematico(String pensamientoMatematico) {
-		this.pensamientoMatematico = pensamientoMatematico;
+	public void setPensamientoEstadistico(String pensamientoEstadistico) {
+		this.pensamientoEstadistico = pensamientoEstadistico;
 	}
 
-	public String getPensamientoMatematicoNivel() {
-		return pensamientoMatematicoNivel;
+	public String getPensamientoEstadisticoNivel() {
+		return pensamientoEstadisticoNivel;
 	}
 
-	public void setPensamientoMatematicoNivel(String pensamientoMatematicoNivel) {
-		this.pensamientoMatematicoNivel = pensamientoMatematicoNivel;
+	public void setPensamientoEstadisticoNivel(String pensamientoEstadisticoNivel) {
+		this.pensamientoEstadisticoNivel = pensamientoEstadisticoNivel;
 	}
 
 	public String getDisenhoSoftware() {

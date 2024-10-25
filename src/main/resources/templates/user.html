@@ -9,53 +9,8 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 	<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
     <title>Usuario</title>
-    <style>
-		.card {
-		    width: 400px;
-		    margin: 10px auto;
-		    padding: 20px;
-		    background-color: rgba(255, 255, 255, 0.9);
-		    border-radius: 10px;
-			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-		}
-
-        .custom-badge {
-            color: rgb(0, 0, 0);
-            font-size: 1rem;
-            padding: 5px 10px;
-            margin-right: 5px;
-            border-radius: 20px;
-        }
-
-        .nivel-1 {
-            background-color: rgb(255, 128, 128);
-        }
-
-        .nivel-2 {
-            background-color: rgb(0, 128, 255);
-        }
-
-        .nivel-3 {
-            background-color: rgb(255, 128, 64);
-        }
-
-        .nivel-4 {
-            background-color: rgb(128, 255, 128);
-        }
-        
-    </style>
 </head>
 <body>
-
-
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
-	    <div class="container d-flex justify-content-start align-items-center">
-	        <img th:src="@{/logo-uts.png}" alt="UTS" class="img-fluid mr-3" style="max-width: 150px;">
-	        <a class="navbar-brand m-3">
-	            <span class="title">Saber Pro</span>
-	        </a>
-	    </div>
-	</nav><br>
 	
 	<div style="text-align: center;">
 		<h2 class="section__title" style="font-weight: bold; border-bottom: 2px solid rgb(0, 128, 255); display: inline-block;">Bienvenido [[${user.fullname}]]</h2><br><br>
@@ -249,25 +204,25 @@
         </div><br>
         
         <div>
-            <strong>Pensamiento matemático</strong>
+            <strong>Pensamiento Estadistico</strong>
             <div>
                 <span  class="badge rounded-pill custom-badge nivel-1"
-                    th:if="${user.pensamientoMatematico > '0' and user.pensamientoMatematico <= '125'}"
-                    style=>[[${user.pensamientoMatematicoNivel}]]
+                    th:if="${user.pensamientoEstadistico > '0' and user.pensamientoEstadistico <= '125'}"
+                    style=>[[${user.pensamientoEstadisticoNivel}]]
                     </span>
                 <span  class="badge rounded-pill custom-badge nivel-2"
-                    th:if="${user.pensamientoMatematico > '125' and user.pensamientoMatematico <= '155'}"
-                    style=>[[${user.pensamientoMatematicoNivel}]]
+                    th:if="${user.pensamientoEstadistico > '125' and user.pensamientoEstadistico <= '155'}"
+                    style=>[[${user.pensamientoEstadisticoNivel}]]
                     </span>
                 <span  class="badge rounded-pill custom-badge nivel-3"
-                    th:if="${user.pensamientoMatematico > '155' and user.pensamientoMatematico <= '190'}"
-                    style=>[[${user.pensamientoMatematicoNivel}]]
+                    th:if="${user.pensamientoEstadistico > '155' and user.pensamientoEstadistico <= '190'}"
+                    style=>[[${user.pensamientoEstadisticoNivel}]]
                     </span>
-                <span  class="badge rounded-pill custom-badge nivel-4" th:if="${user.pensamientoMatematico > '190'}"
-                    style=>[[${user.pensamientoMatematicoNivel}]]
+                <span  class="badge rounded-pill custom-badge nivel-4" th:if="${user.pensamientoEstadistico > '190'}"
+                    style=>[[${user.pensamientoEstadisticoNivel}]]
                     </span>
 					<br>
-                <strong><span>Puntaje: </span></strong>[[${user.pensamientoMatematico}]]
+                <strong><span>Puntaje: </span></strong>[[${user.pensamientoEstadistico}]]
             </div>
         </div><br>
         
@@ -308,12 +263,6 @@
 	<div class="text-center">
 		<a th:href="@{/login}" class="btn btn-primary m-3 p-3">Salir</a>
 	</div>
-	
-	<footer class="footer bg-dark text-white fixed-bottom">
-		<div class="container">
-			<p class="text-center mb-0 py-2">Adrian Farid Hernandez Prince</p>
-		</div>
-	</footer><br><br><br><br>
 
 	<script th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

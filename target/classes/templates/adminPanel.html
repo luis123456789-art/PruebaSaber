@@ -12,21 +12,13 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
-		    <div class="container d-flex justify-content-start align-items-center">
-		        <img th:src="@{/logo-uts.png}" alt="UTS" class="img-fluid mr-3" style="max-width: 150px;">
-		        <a class="navbar-brand m-3">
-		            <span class="title">Saber Pro</span>
-		        </a>
-		    </div>
-		</nav><br>
     <main>
         <div class="container p-4">
             <div class="row justify-content-center">
 				
 			<div style="text-align: center;">
 				<h2 class="section__title" style="font-weight: bold; border-bottom: 2px solid rgb(0, 128, 255); display: inline-block;">Panel De Administradores</h2><br><br>
-				<img th:src="@{/agregarAdmin.png}" alt="agregarAdmin" class="img-fluid mr-3" style="max-width: 150px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);">
+				<img th:src="@{/agregaradmin.png}" alt="agregarAdmin" class="img-fluid mr-3" style="max-width: 150px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);">
 			</div>
 
                 <table class="table table-primary table-hover table-sm text-center mt-3" style="width: 90%; margin: 0 auto; border-radius: 15px; overflow: hidden;">
@@ -44,7 +36,7 @@
                             <td th:text="${admin.email}"></td>
                             <td th:text="${admin.password}"></td>
                             <td>
-                                <a class="btn btn-info btn-xs m-2" th:href="@{/admins/edit/{id}(id=${admin.id})}">Editar</a>
+                                <a class="btn btn-success btn-xs m-2" th:href="@{/admins/edit/{id}(id=${admin.id})}">Editar</a>
 								<a class="btn btn-danger btn-xs m-2" th:href="@{/admins/delete/{id}(id=${admin.id})}">Eliminar</a>
                             </td>
                         </tr>
@@ -59,11 +51,6 @@
             </div>
         </div>
     </main>
-	<footer class="footer bg-dark text-white fixed-bottom">
-		<div class="container">
-			<p class="text-center mb-0 py-2">Adrian Farid Hernandez Prince</p>
-		</div>
-	</footer><br><br><br><br>
 
 	    <script th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

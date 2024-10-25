@@ -10,29 +10,16 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
     <title>Coordinación</title>
 </head>
-<style>
-	th {
-		vertical-align: middle;
-	}
-</style>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
-		<div class="container d-flex justify-content-start align-items-center">
-			<img th:src="@{/logo-uts.png}" alt="UTS" class="img-fluid mr-3" style="max-width: 150px;">
-			<a class="navbar-brand m-3">
-				<span class="title">Saber Pro</span>
-			</a>
-		</div>
-	</nav><br>
 
 	<div style="text-align: center;">
-	    <h2 class="section__title" style="font-weight: bold; border-bottom: 2px solid rgb(0, 128, 255); display: inline-block;">Bienvenido Administrador</h2><br><br>
+	    <h2 class="section__title" style="font-weight: bold; border-bottom: 2px solid rgb(181, 119, 247); display: inline-block;">Bienvenido Administrador</h2><br><br>
 		<img th:src="@{/administrador.png}" alt="agregarAdmin" class="img-fluid mr-3" style="max-width: 150px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);">
 	</div><br>
 
     <div class="container mt-4">
         <div class="table-responsive" style="height: 700px; overflow-y: auto;">
-			<table class="table table-primary table-hover table-sm text-center" style="width: 90%; margin: 0 auto; border-radius: 15px; overflow: hidden;">
+			<table class="table table-info table-hover table-sm text-center" style="width: 90%; margin: 0 auto; border-radius: 15px; overflow: hidden;">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -91,14 +78,14 @@
                         <td th:text="${user.inglesNivel}"></td>
                         <td th:text="${user.proyectosIngenieria}"></td>
                         <td th:text="${user.proyectosIngenieriaNivel}"></td>
-                        <td th:text="${user.pensamientoMatematico}"></td>
-                        <td th:text="${user.pensamientoMatematicoNivel}"></td>
+                        <td th:text="${user.pensamientoEstadistico}"></td>
+                        <td th:text="${user.pensamientoEstadisticoNivel}"></td>
                         <td th:text="${user.disenhoSoftware}"></td>
                         <td th:text="${user.disenhoSoftwareNivel}"></td>
                         <td th:text="${user.nivelDeIngles}"></td>
                         <td>
                             <div class="d-flex justify-content-center align-items-center">
-                                <a th:href="@{/administrador/edit/{id}(id=${user.id})}" class="btn btn-info btn-xs m-2">Editar</a>
+                                <a th:href="@{/administrador/edit/{id}(id=${user.id})}" class="btn btn-success btn-xs m-2">Editar</a>
                                 <a th:href="@{/administrador/delete/{id}(id=${user.id})}" class="btn btn-danger btn-xs m-2">Eliminar</a>
                             </div>
                         </td>
@@ -110,15 +97,9 @@
 
 	<div class="text-center">
 			<a th:href="@{/administrador/new}" class="btn btn-success m-3 p-3">Agregar Usuario</a>
-			<a href="/admins/" class="btn btn-warning m-3 p-3">Agregar Administrador</a>
+			<a href="/admins/" class="btn btn-primary m-3 p-3">Agregar Administrador</a>
 			<a th:href="@{/}" class="btn btn-danger m-3 p-3">Salir</a>
 		</div>
-		
-	<footer class="footer bg-dark text-white fixed-bottom">
-		<div class="container">
-		    <p class="text-center mb-0 py-2">Adrian Farid Hernandez Prince</p>
-		</div>
-	</footer><br><br><br>
 
 	<script th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
